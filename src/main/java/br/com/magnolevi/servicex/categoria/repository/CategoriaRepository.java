@@ -1,4 +1,4 @@
-package br.com.magnolevi.servicex.categoria.repositores;
+package br.com.magnolevi.servicex.categoria.repository;
 
 import br.com.magnolevi.servicex.categoria.domain.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;

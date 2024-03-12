@@ -17,7 +17,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id_categoria;
+    private Integer idCategoria;
     @Column(name = "nome")
     private String nomeCategoria;
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)

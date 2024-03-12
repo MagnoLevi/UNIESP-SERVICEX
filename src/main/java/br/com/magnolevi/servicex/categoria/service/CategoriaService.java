@@ -1,7 +1,7 @@
-package br.com.magnolevi.servicex.categoria.services;
+package br.com.magnolevi.servicex.categoria.service;
 
 import br.com.magnolevi.servicex.categoria.domain.Categoria;
-import br.com.magnolevi.servicex.categoria.repositores.CategoriaRepository;
+import br.com.magnolevi.servicex.categoria.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
