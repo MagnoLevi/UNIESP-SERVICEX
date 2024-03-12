@@ -17,8 +17,8 @@ public class CategoriaResource {
 
     @PostMapping
     public ResponseEntity<Categoria> store(@RequestBody Categoria categoria){
-        Categoria nova_categoria = categoriaService.store(categoria);
-        return new ResponseEntity<>(nova_categoria, HttpStatus.CREATED);
+        Categoria novaCategoria = categoriaService.store(categoria);
+        return new ResponseEntity<>(novaCategoria, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -33,5 +33,23 @@ public class CategoriaResource {
         return categoriaService.show(id)
                 .map(categoria -> new ResponseEntity(categoria, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> destroy(@PathVariable Integer id){
+        categoriaService.destroy(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Categoria> update(@PathVariable Integer id, @RequestBody Categoria categoria){
+        if (!categoriaService.show(id).isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        categoria.setIdCategoria(id);
+        Categoria novaCategoria = categoriaService.update(categoria);
+        return new ResponseEntity<>(novaCategoria, HttpStatus.OK);
     }
 }

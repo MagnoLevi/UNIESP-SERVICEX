@@ -47,6 +47,11 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 
+    /**
+     * Busca uma categoria por id
+     * @param id
+     * @return
+     */
     public Optional<Categoria> show(Integer id){
         return categoriaRepository.findById(id);
     }
