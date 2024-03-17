@@ -21,9 +21,8 @@ public class Servico {
     @Column(name = "nome")
     private String nomeServico;
     @Column(name = "valor")
-    private Double valor;
-    @Column(name = "categoria")
+    private Double valorServico;
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 }
