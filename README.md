@@ -1,3 +1,4 @@
 # SERVICEX
 
-Projeto da faculdade aprendendo a usar Spring
+Projeto da universidade UNIESP.
+Primeira aplicação de spring em um projeto
