@@ -1,11 +1,14 @@
 package br.com.magnolevi.servicex.servico.domain;
 
 import br.com.magnolevi.servicex.categoria.domain.Categoria;
+import br.com.magnolevi.servicex.ordemServico.domain.OrdemServico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,11 +21,13 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer idServico;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
     @Column(name = "nome")
     private String nomeServico;
     @Column(name = "valor")
     private Double valorServico;
-    @ManyToOne
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    @ManyToMany
+    private List<OrdemServico> ordermServicos;
 }

@@ -26,4 +26,28 @@ public class ServicoResource {
         List<Servico> data = servicoService.index();
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Servico> show(@PathVariable Integer id){
+        return servicoService.show(id)
+                .map(servico -> new ResponseEntity(servico, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> destroy(@PathVariable Integer id){
+        servicoService.destroy(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Servico> update(@PathVariable Integer id, @RequestBody Servico servico){
+        if (!servicoService.show(id).isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        servico.setIdServico(id);
+        Servico novoServico = servicoService.update(servico);
+        return new ResponseEntity<>(novoServico, HttpStatus.OK);
+    }
 }
